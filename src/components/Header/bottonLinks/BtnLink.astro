@@ -1,0 +1,16 @@
+---
+import {BsGithub} from "react-icons/bs";
+
+interface Props {
+  label: string;
+  href: string;
+}
+
+const { label, href }: Props = Astro.props;
+---
+
+<a class="border-2 border-blue-500 text-blue-500 rounded-xl p-1.5 transition ease-in-out hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 dark:border-cyan-400 dark:text-cyan-400 dark:hover:text-white" aria-label={label} href={href} target="_blank">
+  <slot>
+    <BsGithub size={24} />
+  </slot>
+</a>

@@ -1,0 +1,32 @@
+---
+import { SiJavascript } from "react-icons/si";
+
+const { name, color="#FFB648" } = Astro.props;
+---
+
+<!-- item de Skill -->
+<div class="flex items-center border border-zinc-300 dark:border-zinc-600 p-2.5 rounded-md color-hover min-w-full cursor-default">
+  <div class="bg-zinc-300 dark:bg-zinc-600 p-2.5 rounded-md">
+    <!-- children -->
+    <slot>
+      <SiJavascript size={22} />
+    </slot>
+  </div>
+  <span class="pl-3">{ name }</span>
+</div>
+
+<!-- Estilos -->
+<style define:vars={{color}}>
+  .color-hover:hover {
+    border-color: var(--color);
+  }
+
+  .color-hover:hover > div {
+    color: var(--color);
+  }
+
+  html:not(.dark) .color-hover:hover > div {
+    background-color: var(--color);
+    color: #000;
+  }
+</style>

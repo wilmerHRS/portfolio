@@ -1,0 +1,28 @@
+---
+import BottonLinks from "@components/Header/bottonLinks/BottonLinks.astro";
+import ContainerButton from "@components/Header/ContainerButton.astro";
+import ContainerLiLink from "@components/Header/ContainerLiLink.astro";
+import { SiJavascript } from "react-icons/si";
+---
+
+<!-- Header -->
+<div>
+  <header class="fixed z-20 top-0 w-full dark:text-white shadow-xl shadow-slate-400/10 dark:shadow-cyan-500/10 backdrop-blur-md bg-zinc-100/50 dark:bg-zinc-800/30">
+    <div class="container max-w-screen-xl mx-auto px-4">
+      <div class="flex justify-between py-2">
+        <!-- Logo -->
+        <a class="inline-block" href="#inicio">
+          <SiJavascript size={28} className="h-full" />
+        </a>
+        <!-- Links -->
+        <div class="flex gap-8 content-center">
+          <!-- Container Links -->
+          <ContainerLiLink />
+          <!-- buttons -->
+          <ContainerButton />
+        </div>
+      </div>
+    </div>
+  </header>
+  <BottonLinks />
+</div>

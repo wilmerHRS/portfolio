@@ -1,0 +1,19 @@
+---
+import Column from "../Column.astro";
+import SkillItem from "../SkillItem.astro";
+import { BsCloudy } from "react-icons/bs";
+import { SiFirebase, SiDigitalocean } from "react-icons/si";
+
+---
+
+<Column title="Servicios">
+  <SkillItem name="Firebase" color="#FFB619">
+    <SiFirebase size={22} />
+  </SkillItem>
+  <SkillItem name="DigitalOcean" color="#008BFF">
+    <SiDigitalocean size={22} />
+  </SkillItem>
+  <SkillItem name="Cloudinary" color="#232AC5">
+    <BsCloudy size={22} />
+  </SkillItem>
+</Column>

@@ -1,0 +1,31 @@
+---
+import Column from "../Column.astro";
+import SkillItem from "../SkillItem.astro";
+import { SiNextdotjs, SiAstro, SiExpress, SiNestjs, SiDotnet, SiFlask } from "react-icons/si";
+import { BsFillBootstrapFill } from "react-icons/bs";
+
+---
+
+<Column title="Frameworks">
+  <SkillItem name="Next.js" color="#FFFFFF">
+    <SiNextdotjs size={22} />
+  </SkillItem>
+  <SkillItem name="Astro" color="#FF8700">
+    <SiAstro size={22} />
+  </SkillItem>
+  <SkillItem name="Express" color="#6BBB3B">
+    <SiExpress size={22} />
+  </SkillItem>
+  <SkillItem name="Nest" color="#EE3363">
+    <SiNestjs size={22} />
+  </SkillItem>
+  <SkillItem name=".NET Core" color="#8C3DCF">
+    <SiDotnet size={22} />
+  </SkillItem>
+  <SkillItem name="Flask" color="#FFFFFF">
+    <SiFlask size={22} />
+  </SkillItem>
+  <SkillItem name="Bootstrap" color="#6D5CFF">
+    <BsFillBootstrapFill size={22} />
+  </SkillItem>
+</Column>

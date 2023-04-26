@@ -1,0 +1,33 @@
+---
+import Data from "./Data.astro";
+import Background from "./Background.astro";
+
+---
+
+<!-- About Me -->
+<div class="relative overflow-hidden">
+  <div class="container max-w-screen-xl mx-auto px-4 md:px-8 lg:px-12 relative c-aboutme-height" id="sobre-mi">
+    <div class="h-screen c-height">
+      <!-- Imagen -->
+      <div class="hidden absolute z-10 h-full lg:flex flex-wrap content-center">
+        <img class="h-52 w-52 md:h-80 md:w-80 lg:h-96 lg:w-72 xl:h-96 xl:w-80 object-cover rounded-3xl shadow-botton-content" src="/images/jpg/rati-dev.jpeg" alt="Rati dev">
+      </div>
+      <!-- Información -->
+      <div class="flex flex-wrap h-screen w-full justify-center md:justify-end content-center">
+        <Data />
+      </div>
+    </div>
+  </div>
+  <Background />
+</div>
+
+
+<style>
+  @media screen and (max-height: 620px) {
+    .c-aboutme-height {
+      height: 100%;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+</style>

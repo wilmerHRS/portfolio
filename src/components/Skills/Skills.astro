@@ -1,0 +1,63 @@
+---
+import Background from "./Background.astro";
+import DataBaseColumn from "./skillType/DataBaseColumn.astro";
+import FrameworkColumn from "./skillType/FrameworkColumn.astro";
+import LanguageColumn from "./skillType/LanguageColumn.astro";
+import OtherColumn from "./skillType/OtherColumn.astro";
+import ServiceColumn from "./skillType/ServiceColumn.astro";
+---
+
+<!-- Skills -->
+<div class="relative overflow-hidden">
+  <div class="container max-w-screen-xl mx-auto px-4 md:px-8 lg:px-4 c-padding" id="habilidades">
+    <div class="h-full lg:h-screen c-skill-height">
+      <div class="h-full flex flex-wrap content-center mb-2">
+        <h3 class="font-semibold text-2xl md:text-3xl xl:text-4xl mb-9 w-full">Habilidades</h3>
+        <div class="grid c-grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-5 md:gap-12 lg:gap-5 xl:gap-9 w-full">
+          <LanguageColumn />
+          <FrameworkColumn />
+          <DataBaseColumn />
+          <ServiceColumn />
+          <OtherColumn />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background -->
+  <Background />
+</div>
+
+<style>
+  @media screen and (max-height: 640px) {
+    .c-skill-height {
+      height: 100%;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+
+  @media screen and (max-width: 440px) {
+    .c-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .c-skill-height {
+      height: 100%;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    .c-padding {
+      padding-right: 38px;
+      padding-left: 38px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .c-skill-height {
+      height: 100%;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+</style>
