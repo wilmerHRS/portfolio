@@ -43,7 +43,7 @@ const SoundButton = ({ children, iconSound, iconMute }: Props) => {
         {music ? iconMute : iconSound}
       </button>
       <audio loop id="music" className="hidden" ref={tagMusic}>
-        <source src="/music/kick-back.mp3" type="audio/mp3" />
+        <source src="music/kick-back.mp3" type="audio/mp3" />
       </audio>
     </>
   );
