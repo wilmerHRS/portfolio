@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
-import { IoMdSunny } from "react-icons/io";
-import { HiMoon } from "react-icons/hi";
+import { ReactNode, useEffect, useState } from "react";
+// import { IoMdSunny } from "react-icons/io";
+// import { HiMoon } from "react-icons/hi";
+// import { Icon } from "astro-icon";
 import { changeTheme } from "src/helpers/theme";
 
-const ThemeButton = () => {
+interface Props {
+  children: string | JSX.Element | JSX.Element[];
+  iconLight?: JSX.Element;
+  iconDark?: JSX.Element;
+}
+
+const ThemeButton = ({ children, iconLight, iconDark }: Props) => {
   const [isDark, setIsDark] = useState(false);
 
   const theme = () => {
@@ -21,10 +28,10 @@ const ThemeButton = () => {
 
   return (
     <button
-      className="transition ease-in-out bg-slate-200 dark:bg-zinc-700 hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 rounded-full p-2"
+      className="transition ease-in-out bg-slate-200 dark:bg-zinc-700 hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 rounded-full p-2 h-9 w-9"
       onClick={handleClick}
     >
-      {isDark ? <IoMdSunny size={18} /> : <HiMoon size={18} />}
+      {isDark ? iconLight : iconDark}
     </button>
   );
 };

@@ -1,18 +1,23 @@
 ---
+// import { SiReact ,SiNodedotjs, SiFigma } from "react-icons/si";
+import { Icon } from "astro-icon";
+
 import Column from "../Column.astro";
 import SkillItem from "../SkillItem.astro";
-import { SiReact ,SiNodedotjs, SiFigma } from "react-icons/si";
 
 ---
 
 <Column title="Otros">
   <SkillItem name="React" color="#02DEF0">
-    <SiReact size={22} />
+    <!-- <SiReact size={22} client:load /> -->
+    <Icon name="simple-icons:react" class="w-6 h-6" />
   </SkillItem>
   <SkillItem name="Node" color="#69D330">
-    <SiNodedotjs size={22} />
+    <!-- <SiNodedotjs size={22} /> -->
+    <Icon name="simple-icons:nodedotjs" class="w-6 h-6" />
   </SkillItem>
   <SkillItem name="Figma" color="#FF4B4B">
-    <SiFigma size={22} />
+    <!-- <SiFigma size={22} client:load /> -->
+    <Icon name="ph:figma-logo" class="w-6 h-6" />
   </SkillItem>
 </Column>

@@ -1,15 +1,17 @@
 ---
-import { SiJavascript } from "react-icons/si";
+// import { SiJavascript } from "react-icons/si";
+import { Icon } from "astro-icon";
 
 const { name, color="#FFB648" } = Astro.props;
 ---
 
 <!-- item de Skill -->
 <div class="flex items-center border border-zinc-300 dark:border-zinc-600 p-2.5 rounded-md color-hover min-w-full cursor-default">
-  <div class="bg-zinc-300 dark:bg-zinc-600 p-2.5 rounded-md">
+  <div class="bg-zinc-300 dark:bg-zinc-600 p-2 rounded-md">
     <!-- children -->
     <slot>
-      <SiJavascript size={22} />
+      <!-- <SiJavascript size={22} client:load /> -->
+      <Icon name="simple-icons:javascript" class="w-6 h-6" />
     </slot>
   </div>
   <span class="pl-3">{ name }</span>

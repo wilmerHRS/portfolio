@@ -1,11 +1,21 @@
 ---
+import { Icon } from "astro-icon";
 import MenuButton from "./buttons/MenuButton";
 import SoundButton from "./buttons/SoundButton";
 import ThemeButton from "./buttons/ThemeButton";
 ---
 
 <div class="flex content-center gap-2">
-  <ThemeButton client:visible />
-  <SoundButton client:visible />
-  <MenuButton client:visible />
+  <ThemeButton client:visible>
+    <Icon slot="iconLight" name="ph:sun-fill" class="w-5 h-5" />
+    <Icon slot="iconDark" name="ph:moon-fill" class="w-5 h-5" />
+  </ThemeButton>
+  <SoundButton client:visible>
+    <Icon slot="iconSound" name="ant-design:sound-filled" class="w-5 h-5" />
+    <Icon slot="iconMute" name="fa-solid:volume-mute" class="w-5 h-5" />
+  </SoundButton>
+  <MenuButton client:visible>
+    <Icon slot="iconMenu" name="icon-park-outline:hamburger-button" class="w-5 h-5" />
+    <Icon slot="iconClose" name="ic:round-close" class="w-5 h-5" />
+  </MenuButton>
 </div>
