@@ -17,15 +17,15 @@ const SoundButton = ({ children, iconSound, iconMute }: Props) => {
     setMusic(!music);
   };
 
-  //! descomentar una vez acabes todo
-  useEffect(() => {
-    if (music) {
-      tagMusic.current.play();
-    } else {
-      tagMusic.current.pause();
-    }
-  }, [music]);
-  //!
+  // //! descomentar una vez acabes todo
+  // useEffect(() => {
+  //   if (music) {
+  //     tagMusic.current.play();
+  //   } else {
+  //     tagMusic.current.pause();
+  //   }
+  // }, [music]);
+  // //!
 
   useEffect(() => {
     document.body.addEventListener("load", () => {
