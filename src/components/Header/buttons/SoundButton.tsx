@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SoundButton = ({ children, iconSound, iconMute }: Props) => {
-  const [music, setMusic] = useState(true);
+  const [music, setMusic] = useState(false);
   const tagMusic = useRef<HTMLAudioElement | null>(null);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -17,22 +17,22 @@ const SoundButton = ({ children, iconSound, iconMute }: Props) => {
     setMusic(!music);
   };
 
-  // //! descomentar una vez acabes todo
-  // useEffect(() => {
-  //   if (music) {
-  //     tagMusic.current.play();
-  //   } else {
-  //     tagMusic.current.pause();
-  //   }
-  // }, [music]);
-  // //!
-
+  //! descomentar una vez acabes todo
   useEffect(() => {
-    document.body.addEventListener("load", () => {
-      setMusic(!music);
-    });
-    tagMusic.current.volume = 0.3;
-  }, []);
+    if (music) {
+      tagMusic.current.play();
+    } else {
+      tagMusic.current.pause();
+    }
+  }, [music]);
+  //!
+
+  // useEffect(() => {
+  //   document.body.addEventListener("load", () => {
+  //     setMusic(!music);
+  //   });
+  //   tagMusic.current.volume = 0.3;
+  // }, []);
 
   return (
     <>

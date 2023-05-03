@@ -48,6 +48,7 @@ const Form = () => {
       );
 
       alert("Formulario enviado" + res.status);
+      setForm(initialForm)
     } catch (err) {
       alert("Formulario no enviado");
     }

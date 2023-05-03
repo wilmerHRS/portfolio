@@ -1,7 +1,7 @@
 ---
 import Background from "./Background.astro"
 import BtnContact from "./buttons/BtnContact.astro";
-import BtnCV from "./buttons/BtnCV.astro";
+import BtnCV from "./buttons/BtnCV";
 import Data from "./Data.astro";
 
 ---
@@ -16,7 +16,7 @@ import Data from "./Data.astro";
           <Data />
           <div class="flex gap-6 font-semibold pt-10">
             <BtnContact />
-            <BtnCV />
+            <BtnCV client:visible />
           </div>
         </div>
         <!-- Imagen -->
