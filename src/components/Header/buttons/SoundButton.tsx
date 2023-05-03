@@ -27,12 +27,12 @@ const SoundButton = ({ children, iconSound, iconMute }: Props) => {
   }, [music]);
   //!
 
-  // useEffect(() => {
-  //   document.body.addEventListener("load", () => {
-  //     setMusic(!music);
-  //   });
-  //   tagMusic.current.volume = 0.3;
-  // }, []);
+  useEffect(() => {
+    // document.body.addEventListener("load", () => {
+    //   setMusic(!music);
+    // });
+    tagMusic.current.volume = 0.3;
+  }, []);
 
   return (
     <>
