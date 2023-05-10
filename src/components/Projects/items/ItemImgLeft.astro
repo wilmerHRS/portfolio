@@ -1,0 +1,33 @@
+---
+import Data from "../Data/Data.astro";
+---
+
+<div
+  class="container max-w-screen-md lg:max-w-screen-xl mx-auto relative c-aboutme-height"
+>
+  <div
+    class="lg:absolute lg:z-10 lg:h-full flex flex-wrap content-center justify-center lg:w-2/5"
+  >
+    <div class="relative w-full z-10 lg:z-0 px-6 sm:px-16 lg:px-0">
+      <div class="lg:relative lg:-top-6">
+        <img
+          class="object-cover rounded-xl shadow-botton-content mr-11"
+          src="images/jpg/img-prueba.jpg"
+          alt=""
+        />
+        <img
+          class="hidden lg:block object-cover rounded-xl shadow-botton-content absolute z-20 top-11 ml-11"
+          src="images/jpg/img-prueba.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="relative lg:static -top-36 lg:top-0 flex flex-row justify-center md:justify-end content-center"
+  >
+    <div class="lg:basis-4/6">
+      <Data />
+    </div>
+  </div>
+</div>

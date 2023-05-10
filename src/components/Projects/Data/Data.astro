@@ -1,0 +1,51 @@
+---
+import Technology from "./Technology.astro";
+import GithubButton from "./buttons/GithubButton.astro";
+import LinkButton from "./buttons/LinkButton.astro";
+
+interface Props {
+  padding?: "left" | "right";
+}
+
+const { padding = "left" }: Props = Astro.props;
+
+const paddingClass =
+  padding == "right"
+    ? "lg:pr-36 xl:pr-44 xl:pl-11"
+    : "lg:pl-36 xl:pl-44 xl:pr-11";
+---
+
+<!-- Data -->
+<div
+  class="bg-zinc-100 dark:bg-zinc-800 rounded-xl pt-44 pb-8 lg:py-8 xl:py-14 relative pr-5 pl-5 sm:pr-8 sm:pl-8"
+  class:list={[paddingClass]}
+>
+  <!-- Proyecto y Descripción -->
+  <div class="mb-8">
+    <h5 class="text-lg font-semibold mb-3">CMS Tienda de Ropa CM GARMENTS</h5>
+    <div>
+      I have spent over a decade working in the digital industry, with a focus
+      on web development. During this period I have had the pleasure of working
+      with diverse teams across various industries, and I am always excited to
+      learn about new technologies and innovative approaches.
+    </div>
+  </div>
+  <!-- Tecnologías -->
+  <div class="pb-8 lg:pb-4">
+    <h6 class="font-semibold mb-3 text-blue-500 dark:text-cyan-400">
+      Tecnologías
+    </h6>
+    <div class="flex flex-wrap gap-3">
+      <Technology name="TypeScript" />
+      <Technology name="Styled Components" />
+      <Technology name="Node.js" />
+      <Technology name="Microsft SQL Server" />
+      <Technology name="React" />
+      <Technology name="Styled Components" />
+    </div>
+  </div>
+  <div class="absolute flex gap-2 bottom-0 right-0 p-3 lg:p-2 xl:p-3">
+    <GithubButton />
+    <LinkButton />
+  </div>
+</div>
