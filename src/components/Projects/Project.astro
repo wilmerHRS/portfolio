@@ -1,0 +1,34 @@
+---
+import Data from "./Data/Data.astro";
+import Images from "./Images.astro";
+
+interface Props {
+  positionImg?: "left" | "right";
+}
+
+const { positionImg = "left" }: Props = Astro.props;
+
+const contImagesClass = positionImg == "right" ? "lg:right-0" : "";
+const contDataClass =
+  positionImg == "right" ? "md:justify-start" : "md:justify-end";
+---
+
+<!-- Proyecto -->
+<div
+  class="container max-w-screen-md lg:max-w-screen-xl mx-auto relative c-aboutme-height lg:mb-20"
+>
+  <div
+    class="lg:absolute lg:top-0 lg:z-10 lg:h-full flex flex-wrap content-center justify-center lg:w-2/5"
+    class:list={[contImagesClass]}
+  >
+    <Images position={positionImg} />
+  </div>
+  <div
+    class="relative lg:static -top-36 lg:top-0 flex flex-row justify-center content-center"
+    class:list={[contDataClass]}
+  >
+    <div class="lg:basis-4/6">
+      <Data position={positionImg} />
+    </div>
+  </div>
+</div>

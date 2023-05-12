@@ -1,5 +1,7 @@
 ---
+import Project from "./Project.astro";
 import ItemImgLeft from "./items/ItemImgLeft.astro";
+import ItemImgRight from "./items/ItemImgRight.astro";
 ---
 
 <!-- Projects -->
@@ -11,9 +13,8 @@ import ItemImgLeft from "./items/ItemImgLeft.astro";
     Proyectos
   </h3>
   <div>
-    <!-- Projectos -->
-    <ItemImgLeft />
-    <ItemImgLeft />
+    <Project positionImg="left" />
+    <Project positionImg="right" />
   </div>
 </div>
 

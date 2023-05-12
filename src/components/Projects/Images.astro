@@ -1,0 +1,25 @@
+---
+interface Props {
+  position?: "left" | "right";
+}
+
+const { position = "left" }: Props = Astro.props;
+
+const imgClass = position == "right" ? "-ml-11" : "ml-11";
+---
+
+<div class="relative w-full z-10 lg:z-0 px-6 sm:px-16 lg:px-0">
+  <div class="lg:relative lg:-top-6">
+    <img
+      class="object-cover rounded-xl shadow-botton-content"
+      src="images/jpg/img-prueba.jpg"
+      alt="Imagen 1 referecial del proyecto"
+    />
+    <img
+      class="hidden lg:block object-cover rounded-xl shadow-botton-content absolute z-20 top-11"
+      class:list={[imgClass]}
+      src="images/jpg/img-prueba.jpg"
+      alt="Imagen 2 referecial del proyecto"
+    />
+  </div>
+</div>
