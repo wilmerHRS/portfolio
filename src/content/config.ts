@@ -11,8 +11,12 @@ const projectCollection = defineCollection({
     link: z.string().url(),
     repositories: z
       .object({
-        backend: z.array(z.string().url()).optional(),
-        frontend: z.array(z.string().url()).optional(),
+        backend: z
+          .array(z.object({ title: z.string(), link: z.string().url() }))
+          .optional(),
+        frontend: z
+          .array(z.object({ title: z.string(), link: z.string().url() }))
+          .optional(),
       })
       .strict(),
   }),

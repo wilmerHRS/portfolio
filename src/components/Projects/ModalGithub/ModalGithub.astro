@@ -1,0 +1,31 @@
+---
+import Modal from "@components/Modal.astro";
+import { IRepositories } from "@interfaces/projects.interface";
+import ContainerLiLink from "./ContainerLink.astro";
+
+interface Props {
+  id: string;
+  repositories: IRepositories;
+}
+
+const { id, repositories }: Props = Astro.props;
+---
+
+<Modal id={id}>
+  <div>
+    {
+      repositories.frontend && (
+        <ContainerLiLink
+          title="Frontend"
+          data={repositories.frontend}
+          className={repositories.backend ? "pb-3" : ""}
+        />
+      )
+    }
+    {
+      repositories.backend && (
+        <ContainerLiLink title="Backend" data={repositories.backend} />
+      )
+    }
+  </div>
+</Modal>

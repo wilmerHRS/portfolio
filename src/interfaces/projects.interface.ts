@@ -11,12 +11,12 @@ export interface IProject {
   repositories: IRepositories;
 }
 
-interface IRepositories {
-  backend?: string[];
-  frontend?: string[];
+export interface IRepositories {
+  backend?: IRepository[];
+  frontend?: IRepository[];
 }
 
-// // Images
-// export interface IImage {
-
-// }
+export interface IRepository {
+  title: string;
+  link: string;
+}

@@ -2,6 +2,7 @@
 import { IProject } from "@interfaces/projects.interface";
 import Data from "./Data/Data.astro";
 import Images from "./Images.astro";
+import ModalGithub from "./ModalGithub/ModalGithub.astro";
 
 interface Props {
   positionImg?: "left" | "right";
@@ -18,7 +19,9 @@ const images = data.images.map(
   (image) => `images/projects/${data.slug}/${image}`
 );
 
-// console.log(data);
+let numRepositories =
+  (data.repositories.backend?.length ?? 0) +
+  (data.repositories.frontend?.length ?? 0);
 ---
 
 <!-- Proyecto -->
@@ -36,7 +39,33 @@ const images = data.images.map(
     class:list={[contDataClass]}
   >
     <div class="lg:basis-4/6">
-      <Data position={positionImg} data={data} />
+      <Data
+        position={positionImg}
+        data={data}
+        numRepositories={numRepositories}
+      />
     </div>
   </div>
 </div>
+<!-- Modal -->
+{
+  numRepositories >= 2 ? (
+    <ModalGithub id={`modal-${data.slug}`} repositories={data.repositories} />
+  ) : null
+}
+
+<script define:vars={{ id: data.slug, numRepositories }}>
+  if (numRepositories >= 2) {
+    const modalGithub = document.getElementById(`modal-${id}`);
+    const btn = document.getElementById(`btn-${id}`);
+    let modal = modalGithub.querySelector(".modal");
+    let body = document.querySelector("body");
+
+    btn.addEventListener("click", () => {
+      modalGithub.style.opacity = "1";
+      modalGithub.style.visibility = "visible";
+      modal?.classList.toggle("modal-close");
+      body?.classList.toggle("overflow-hidden");
+    });
+  }
+</script>

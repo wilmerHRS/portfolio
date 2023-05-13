@@ -1,12 +1,17 @@
 ---
 import { Icon } from "astro-icon";
+
+interface Props {
+  id: string;
+}
+
+const { id }: Props = Astro.props;
 ---
 
 <button
   class="border-2 border-blue-500 text-blue-500 rounded-xl p-1 transition ease-in-out hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 dark:border-cyan-400 dark:text-cyan-400 dark:hover:text-white"
   aria-label="Botón de Github"
+  id={`btn-${id}`}
 >
-  <slot>
-    <Icon name="bx:bxl-github" class="w-6 h-6" />
-  </slot>
+  <Icon name="bx:bxl-github" class="w-6 h-6" />
 </button>

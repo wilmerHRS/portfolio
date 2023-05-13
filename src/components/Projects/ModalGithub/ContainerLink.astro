@@ -1,0 +1,23 @@
+---
+import { IRepository } from "@interfaces/projects.interface";
+import LinkGithub from "./LinkGithub.astro";
+
+interface Props {
+  title: string;
+  data: IRepository[];
+  className?: string;
+}
+
+const { title, data, className = "" }: Props = Astro.props;
+---
+
+<div>
+  <spa
+    class="block font-semibold font-family text-blue-500 dark:text-cyan-400 pb-2"
+  >
+    {title}
+  </spa>
+  <div class:list={[className]}>
+    {data.map((repo) => <LinkGithub title={repo.title} href={repo.link} />)}
+  </div>
+</div>

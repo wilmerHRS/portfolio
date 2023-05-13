@@ -21,7 +21,9 @@ link: https://github.com/wilmerHRS/portfolio
 
 repositories:
   frontend:
-    - https://github.com/wilmerHRS/portfolio
+    - title: Vista Frontend
+      link: https://github.com/wilmerHRS/portfolio
   backend:
-    - https://github.com/wilmerHRS/portfolio
+    - title: Vista Backend de Servicios
+      link: https://github.com/wilmerHRS/portfolio
 ---

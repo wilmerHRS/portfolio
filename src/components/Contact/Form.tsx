@@ -72,10 +72,6 @@ const Form = () => {
     body?.classList.toggle("overflow-hidden");
   };
 
-  useEffect(() => {
-    openModalMessage();
-  }, []);
-
   return (
     <div className="bg-zinc-100 dark:bg-zinc-800 rounded-xl py-5 px-4 sm:py-10 sm:px-12 max-w-xl m-auto c-contact-padding">
       <form
