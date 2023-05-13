@@ -1,11 +1,14 @@
 ---
 interface Props {
   position?: "left" | "right";
+  images: string[];
 }
 
-const { position = "left" }: Props = Astro.props;
+const { position = "left", images }: Props = Astro.props;
 
 const imgClass = position == "right" ? "-ml-11" : "ml-11";
+
+// console.log(images);
 ---
 
 <div class="relative w-full z-10 lg:z-0 px-6 sm:px-16 lg:px-0">

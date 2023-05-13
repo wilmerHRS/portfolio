@@ -1,13 +1,15 @@
 ---
+import { IProject } from "@interfaces/projects.interface";
 import Technology from "./Technology.astro";
 import GithubButton from "./buttons/GithubButton.astro";
 import LinkButton from "./buttons/LinkButton.astro";
 
 interface Props {
   position?: "left" | "right";
+  data: IProject;
 }
 
-const { position = "left" }: Props = Astro.props;
+const { position = "left", data }: Props = Astro.props;
 
 const paddingClass =
   position == "right"
@@ -24,13 +26,8 @@ const positionClass = position == "right" ? "right-0 lg:left-0" : "right-0";
 >
   <!-- Proyecto y Descripción -->
   <div class="mb-8">
-    <h5 class="text-lg font-semibold mb-3">CMS Tienda de Ropa CM GARMENTS</h5>
-    <div>
-      I have spent over a decade working in the digital industry, with a focus
-      on web development. During this period I have had the pleasure of working
-      with diverse teams across various industries, and I am always excited to
-      learn about new technologies and innovative approaches.
-    </div>
+    <h5 class="text-lg font-semibold mb-3">{data.title}</h5>
+    <div>{data.description}</div>
   </div>
   <!-- Tecnologías -->
   <div class="pb-8 lg:pb-4">
@@ -38,12 +35,7 @@ const positionClass = position == "right" ? "right-0 lg:left-0" : "right-0";
       Tecnologías
     </h6>
     <div class="flex flex-wrap gap-3">
-      <Technology name="TypeScript" />
-      <Technology name="Styled Components" />
-      <Technology name="Node.js" />
-      <Technology name="Microsft SQL Server" />
-      <Technology name="React" />
-      <Technology name="Styled Components" />
+      {data.technology.map((tech) => <Technology name={tech} />)}
     </div>
   </div>
   <div
@@ -51,6 +43,6 @@ const positionClass = position == "right" ? "right-0 lg:left-0" : "right-0";
     class:list={[positionClass]}
   >
     <GithubButton />
-    <LinkButton />
+    <LinkButton href={data.link} />
   </div>
 </div>

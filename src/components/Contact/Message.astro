@@ -1,0 +1,19 @@
+---
+import Modal from "@components/Modal.astro";
+import { Icon } from "astro-icon";
+---
+
+<Modal id="modal-message">
+  <div class="p-2">
+    <Icon
+      name="ic:round-message"
+      class="w-14 h-14 m-auto text-blue-500 dark:text-cyan-400"
+    />
+    <span
+      class="block text-center font-family font-semibold text-2xl pt-3 pb-1.5 text-blue-500 dark:text-cyan-400"
+    >
+      Mensaje Enviado
+    </span>
+    <p class="text-center">En breve me estaré comunicando contigo</p>
+  </div>
+</Modal>

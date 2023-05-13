@@ -7,16 +7,22 @@ interface Props {
 const { title, href }: Props = Astro.props;
 ---
 
-<a class="c-a inline-block my-1.5 hover:text-blue-500 dark:hover:text-cyan-400" id={`id-${href}`} href={`#${href}`}>
-  {title}
-</a>
+<li>
+  <a
+    class="c-a inline-block my-1.5 hover:text-blue-500 dark:hover:text-cyan-400"
+    id={`id-${href}`}
+    href={`#${href}`}
+  >
+    {title}
+  </a>
+</li>
 
 <style>
   @media screen and (max-width: 640px) {
     .c-a {
       margin: 12px 0;
       padding: 0px 25px;
-      transition: all 0.40s ease;
+      transition: all 0.4s ease;
     }
   }
 </style>

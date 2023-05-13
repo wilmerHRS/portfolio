@@ -1,7 +1,17 @@
 ---
 import Project from "./Project.astro";
-import ItemImgLeft from "./items/ItemImgLeft.astro";
-import ItemImgRight from "./items/ItemImgRight.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects", ({ data }) => {
+  return data.draft !== true;
+});
+
+// ordenar proyectos por fecha
+const orderedProjects = projects.sort((a, b) => {
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+// console.log(orderedProjects);
 ---
 
 <!-- Projects -->
@@ -13,8 +23,16 @@ import ItemImgRight from "./items/ItemImgRight.astro";
     Proyectos
   </h3>
   <div>
-    <Project positionImg="left" />
-    <Project positionImg="right" />
+    {
+      orderedProjects.map((project, i) => (
+        <Project
+          positionImg={i % 2 === 0 ? "left" : "right"}
+          data={{ ...project.data, slug: project.slug }}
+        />
+      ))
+    }
+    <!-- <Project positionImg="left" />
+    <Project positionImg="right" /> -->
   </div>
 </div>
 

@@ -1,31 +1,33 @@
 ---
 // import Footer from '@layouts/Footer.astro';
-import AboutMe from '@components/AboutMe/AboutMe.astro';
-import Contact from '@components/Contact/Contact.astro';
-import Home from '@components/Home/Home.astro';
-import Skills from '@components/Skills/Skills.astro';
-import Header from '@layouts/Header.astro';
-import Layout from '@layouts/Layout.astro';
-import Footer from '@layouts/Footer.astro';
-import Projects from '@components/Projects/Projects.astro';
+import AboutMe from "@components/AboutMe/AboutMe.astro";
+import Contact from "@components/Contact/Contact.astro";
+import Home from "@components/Home/Home.astro";
+import Skills from "@components/Skills/Skills.astro";
+import Header from "@layouts/Header.astro";
+import Layout from "@layouts/Layout.astro";
+import Footer from "@layouts/Footer.astro";
+import Projects from "@components/Projects/Projects.astro";
+import BottonLinks from "@components/Header/bottonLinks/BottonLinks.astro";
 ---
 
 <Layout title="Wilmer Reluz | Web Developer">
-	<div class="dark:text-white">
-		<Header />
-		<main>
-			<Home />
-			<AboutMe />
-			<Skills />
-			<Projects />
-			<Contact />
-		</main>
-		<Footer />
-	</div>
+  <div class="dark:text-white">
+    <Header />
+    <main>
+      <Home />
+      <BottonLinks />
+      <AboutMe />
+      <Skills />
+      <Projects />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
 </Layout>
 
 <script>
-	import { handleTheme } from "src/helpers/theme";
+  import { handleTheme } from "src/helpers/theme";
 
-	window.addEventListener("load", handleTheme);
+  window.addEventListener("load", handleTheme);
 </script>

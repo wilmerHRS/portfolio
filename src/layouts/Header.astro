@@ -6,25 +6,22 @@ import { Icon } from "astro-icon";
 ---
 
 <!-- Header -->
-<div>
-  <header
-    class="fixed z-20 top-0 w-full dark:text-white backdrop-blur-md bg-inherit-100/50 dark:bg-inherit-800/30"
-  >
-    <div class="container max-w-screen-xl mx-auto px-4">
-      <div class="flex justify-between py-2">
-        <!-- Logo -->
-        <a class="inline-block" href="#inicio">
-          <Icon name="mdi:language-javascript" class="w-9 h-9" />
-        </a>
-        <!-- Links -->
-        <div class="flex gap-8 content-center">
-          <!-- Container Links -->
-          <ContainerLiLink />
-          <!-- buttons -->
-          <ContainerButton />
-        </div>
+<header
+  class="fixed z-20 top-0 w-full dark:text-white backdrop-blur-md bg-inherit-100/50 dark:bg-inherit-800/30"
+>
+  <div class="container max-w-screen-xl mx-auto px-4">
+    <div class="flex justify-between py-2">
+      <!-- Logo -->
+      <a class="inline-block" href="#inicio">
+        <Icon name="mdi:language-javascript" class="w-9 h-9" />
+      </a>
+      <!-- Links -->
+      <div class="flex gap-8 content-center">
+        <!-- Container Links -->
+        <ContainerLiLink />
+        <!-- buttons -->
+        <ContainerButton />
       </div>
     </div>
-  </header>
-  <BottonLinks />
-</div>
+  </div>
+</header>

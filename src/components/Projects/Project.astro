@@ -1,16 +1,24 @@
 ---
+import { IProject } from "@interfaces/projects.interface";
 import Data from "./Data/Data.astro";
 import Images from "./Images.astro";
 
 interface Props {
   positionImg?: "left" | "right";
+  data: IProject;
 }
 
-const { positionImg = "left" }: Props = Astro.props;
+const { positionImg = "left", data }: Props = Astro.props;
 
 const contImagesClass = positionImg == "right" ? "lg:right-0" : "";
 const contDataClass =
   positionImg == "right" ? "md:justify-start" : "md:justify-end";
+
+const images = data.images.map(
+  (image) => `images/projects/${data.slug}/${image}`
+);
+
+// console.log(data);
 ---
 
 <!-- Proyecto -->
@@ -21,14 +29,14 @@ const contDataClass =
     class="lg:absolute lg:top-0 lg:z-10 lg:h-full flex flex-wrap content-center justify-center lg:w-2/5"
     class:list={[contImagesClass]}
   >
-    <Images position={positionImg} />
+    <Images position={positionImg} images={images} />
   </div>
   <div
     class="relative lg:static -top-36 lg:top-0 flex flex-row justify-center content-center"
     class:list={[contDataClass]}
   >
     <div class="lg:basis-4/6">
-      <Data position={positionImg} />
+      <Data position={positionImg} data={data} />
     </div>
   </div>
 </div>

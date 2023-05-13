@@ -1,26 +1,37 @@
 ---
 import Form from "./Form";
 import Background from "./Background.astro";
+import Modal from "@components/Modal.astro";
+import Message from "./Message.astro";
 ---
 
 <!-- Contact -->
-<div class="relative overflow-hidden">
-  <div class="container max-w-screen-xl mx-auto px-4 md:px-8 lg:px-12" id="contacto">
-    <div class="h-screen c-contact-height">
-      <!-- Información -->
-      <div class="h-full flex flex-wrap justify-center content-center">
-        <h3 class="font-semibold text-2xl md:text-3xl xl:text-4xl mb-8">Contáctame 😉</h3>
-        <div class="w-full">
-          <div class="mx-auto">
-            <!-- Formulario de Contacto -->
-            <Form client:visible />
+<div>
+  <div class="relative overflow-hidden">
+    <div
+      class="container max-w-screen-xl mx-auto px-4 md:px-8 lg:px-12"
+      id="contacto"
+    >
+      <div class="h-screen c-contact-height">
+        <!-- Información -->
+        <div class="h-full flex flex-wrap justify-center content-center">
+          <h3 class="font-semibold text-2xl md:text-3xl xl:text-4xl mb-8">
+            Contáctame 😉
+          </h3>
+          <div class="w-full">
+            <div class="mx-auto">
+              <!-- Formulario de Contacto -->
+              <Form client:visible />
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Background -->
+    <Background />
   </div>
-  <!-- Background -->
-  <Background />
+  <!-- Modal Mensaje Enviado -->
+  <Message />
 </div>
 
 <style>

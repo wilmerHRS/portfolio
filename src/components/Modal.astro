@@ -1,0 +1,68 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id }: Props = Astro.props;
+---
+
+<div
+  class="fixed z-50 w-screen h-screen top-0 flex items-center justify-center backdrop-blur-sm bg-slate-500/30 dark:bg-inherit-800/30 modal-container"
+  id={id}
+>
+  <div
+    class="relative bg-white dark:bg-zinc-800 rounded-xl py-5 px-8 modal modal-close"
+  >
+    <button class="absolute top-0 right-0 bg-red-500 rounded-full p-2 m-2 close"
+    ></button>
+    <slot>
+      <span>Esto es el modal</span>
+    </slot>
+  </div>
+</div>
+
+<style>
+  .modal {
+    transition: transform 1s;
+    transform: translateY(0%);
+  }
+
+  .modal-close {
+    transform: translateY(-100vh);
+  }
+
+  .modal-container {
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 1s;
+  }
+</style>
+
+<script define:vars={{ id }}>
+  let modalContainer = document.getElementById(id);
+  let close = modalContainer.querySelector(".close");
+  let modal = modalContainer.querySelector(".modal");
+  let body = document.querySelector("body");
+
+  close.addEventListener("click", () => {
+    modal.classList.toggle("modal-close");
+
+    setTimeout(() => {
+      body.classList.toggle("overflow-hidden");
+      modalContainer.style.opacity = "0";
+      modalContainer.style.visibility = "hidden";
+    }, 800);
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modalContainer) {
+      modal.classList.toggle("modal-close");
+
+      setTimeout(() => {
+        body.classList.toggle("overflow-hidden");
+        modalContainer.style.opacity = "0";
+        modalContainer.style.visibility = "hidden";
+      }, 900);
+    }
+  });
+</script>

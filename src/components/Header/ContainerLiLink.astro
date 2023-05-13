@@ -1,14 +1,16 @@
 ---
-import LiLink from "./LiLink.astro"
+import LiLink from "./LiLink.astro";
 ---
 
-<div class="c-menu shadow-content flex sm:items-center sm:gap-4 md:gap-8 font-family dark:text-zinc-300">
+<ul
+  class="c-menu shadow-content flex sm:items-center sm:gap-4 md:gap-8 font-family dark:text-zinc-300"
+>
   <LiLink title="Inicio" href="inicio" />
   <LiLink title="Sobre mí" href="sobre-mi" />
   <LiLink title="Habilidades" href="habilidades" />
   <LiLink title="Proyectos" href="proyectos" />
   <LiLink title="Contacto" href="contacto" />
-</div>
+</ul>
 
 <style>
   @media screen and (max-width: 640px) {
@@ -23,7 +25,7 @@ import LiLink from "./LiLink.astro"
       flex-direction: column;
       justify-content: flex-start;
       border-radius: 10px;
-      transition: all 0.50s ease;
+      transition: all 0.5s ease;
     }
 
     .c-menu.open {
@@ -32,16 +34,16 @@ import LiLink from "./LiLink.astro"
 
     html:not(.dark) .shadow-content {
       background-color: rgb(255, 255, 255);
-      box-shadow: 0px 0px 28px 2px rgba(125,125,125,0.75);
-      -webkit-box-shadow: 0px 0px 28px 2px rgba(125,125,125,0.75);
-      -moz-box-shadow: 0px 0px 28px 2px rgba(125,125,125,0.75);
+      box-shadow: 0px 0px 28px 2px rgba(125, 125, 125, 0.75);
+      -webkit-box-shadow: 0px 0px 28px 2px rgba(125, 125, 125, 0.75);
+      -moz-box-shadow: 0px 0px 28px 2px rgba(125, 125, 125, 0.75);
     }
 
     .shadow-content {
       background-color: rgb(39 39 42);
-      box-shadow: 0px 0px 28px 4px rgba(255,252,252,0.50);
-      -webkit-box-shadow: 0px 0px 28px 4px rgba(255,252,252,0.50);
-      -moz-box-shadow: 0px 0px 28px 4px rgba(255,252,252,0.50);
+      box-shadow: 0px 0px 28px 4px rgba(255, 252, 252, 0.5);
+      -webkit-box-shadow: 0px 0px 28px 4px rgba(255, 252, 252, 0.5);
+      -moz-box-shadow: 0px 0px 28px 4px rgba(255, 252, 252, 0.5);
     }
   }
 </style>
