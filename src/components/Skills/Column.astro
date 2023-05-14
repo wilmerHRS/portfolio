@@ -1,13 +1,15 @@
 ---
 const { title, className = "" } = Astro.props;
 ---
+
 <div>
-  <h6 class="text-center font-semibold mr-auto mb-5">{ title }</h6>
-  <div class="bg-zinc-100 dark:bg-zinc-800 py-3 px-3 lg:py-2 lg:px-2 xl:py-4 xl:px-3 rounded-md w-full" class:list={[className]} >
-      <div class="flex flex-wrap gap-2">
-        <slot>
-          1
-        </slot>
-      </div>
+  <h6 class="text-center font-semibold mr-auto mb-5">{title}</h6>
+  <div
+    class="bg-zinc-100 dark:bg-zinc-800 py-3 px-3 lg:py-2 lg:px-2 xl:py-4 xl:px-3 rounded-md w-full"
+    class:list={[className]}
+  >
+    <div class="flex flex-wrap gap-3">
+      <slot> 1</slot>
+    </div>
   </div>
 </div>

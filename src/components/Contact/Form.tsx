@@ -105,7 +105,7 @@ const Form = () => {
           value={form.description}
           onChange={handleChange}
         ></textarea>
-        <button className="bg-blue-500 dark:bg-cyan-400 text-white dark:text-black rounded-md px-16 sm:px-20 py-3 block m-auto font-semibold">
+        <button className="bg-blue-500 dark:bg-cyan-400 text-white dark:text-black rounded-md px-16 sm:px-20 py-3 block m-auto font-semibold transition duration-300 ease-in-out hover:scale-110">
           Enviar
         </button>
       </form>

@@ -30,11 +30,14 @@ if (data.repositories.frontend?.length)
 <div
   class="bg-zinc-100 dark:bg-zinc-800 rounded-xl pt-44 pb-8 lg:py-8 xl:py-14 relative pr-5 pl-5 sm:pr-8 sm:pl-8"
   class:list={[paddingClass]}
+  id="cont-data"
 >
   <!-- Proyecto y Descripción -->
   <div class="mb-8">
-    <h5 class="text-lg font-semibold mb-3">{data.title}</h5>
-    <div>{data.description}</div>
+    <h5 class="text-lg font-semibold mb-3 transition duration-300 ease-in-out">
+      {data.title}
+    </h5>
+    <div class="dark:text-zinc-300/90">{data.description}</div>
   </div>
   <!-- Tecnologías -->
   <div class="pb-8 lg:pb-4">
@@ -59,3 +62,13 @@ if (data.repositories.frontend?.length)
     <LinkButton href={data.link} />
   </div>
 </div>
+
+<style>
+  #cont-data:hover h5 {
+    color: rgb(34, 211, 238);
+  }
+
+  html:not(.dark) #cont-data:hover h5 {
+    color: rgb(59, 130, 246);
+  }
+</style>

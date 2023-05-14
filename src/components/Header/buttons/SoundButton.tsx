@@ -20,9 +20,9 @@ const SoundButton = ({ children, iconSound, iconMute }: Props) => {
   //! descomentar una vez acabes todo
   useEffect(() => {
     if (music) {
-      tagMusic.current.play();
+      tagMusic?.current?.play();
     } else {
-      tagMusic.current.pause();
+      tagMusic?.current?.pause();
     }
   }, [music]);
   //!
@@ -37,7 +37,7 @@ const SoundButton = ({ children, iconSound, iconMute }: Props) => {
   return (
     <>
       <button
-        className="transition ease-in-out bg-slate-200 dark:bg-zinc-700 hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 rounded-full p-2 h-9 w-9"
+        className="transition duration-300 ease-in-out bg-slate-200 dark:bg-zinc-700 hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 rounded-full p-2 h-9 w-9"
         onClick={handleClick}
       >
         {music ? iconMute : iconSound}

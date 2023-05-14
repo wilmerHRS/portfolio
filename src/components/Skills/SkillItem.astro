@@ -2,23 +2,26 @@
 // import { SiJavascript } from "react-icons/si";
 import { Icon } from "astro-icon";
 
-const { name, color="#FFB648" } = Astro.props;
+const { name, color = "#FFB648" } = Astro.props;
 ---
 
 <!-- item de Skill -->
-<div class="flex items-center border border-zinc-300 dark:border-zinc-600 p-2.5 rounded-md color-hover min-w-full cursor-default">
-  <div class="bg-zinc-300 dark:bg-zinc-600 p-2 rounded-md">
+<div
+  class="flex items-center border border-zinc-300 dark:border-zinc-600 p-2.5 rounded-md color-hover min-w-full cursor-default transition duration-200 ease-in-out hover:-translate-y-1"
+>
+  <div
+    class="bg-zinc-300 dark:bg-zinc-600 p-2 rounded-md transition duration-200 ease-in-out"
+  >
     <!-- children -->
     <slot>
-      <!-- <SiJavascript size={22} client:load /> -->
       <Icon name="simple-icons:javascript" class="w-6 h-6" />
     </slot>
   </div>
-  <span class="pl-3">{ name }</span>
+  <span class="pl-3 dark:text-zinc-300/90">{name}</span>
 </div>
 
 <!-- Estilos -->
-<style define:vars={{color}}>
+<style define:vars={{ color }}>
   .color-hover:hover {
     border-color: var(--color);
   }
@@ -27,8 +30,16 @@ const { name, color="#FFB648" } = Astro.props;
     color: var(--color);
   }
 
+  .color-hover:hover > span {
+    color: #fff;
+  }
+
   html:not(.dark) .color-hover:hover > div {
     background-color: var(--color);
+    color: #000;
+  }
+
+  html:not(.dark) .color-hover:hover > span {
     color: #000;
   }
 </style>

@@ -22,7 +22,7 @@ const MenuButton = ({ children, iconMenu, iconClose }: Props) => {
 
   return (
     <button
-      className="inline-block sm:hidden transition ease-in-out bg-slate-200 dark:bg-zinc-700 hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 rounded-md p-2 ml-4 h-9 w-9"
+      className="inline-block sm:hidden transition duration-300 ease-in-out bg-slate-200 dark:bg-zinc-700 hover:bg-blue-500 hover:text-white dark:hover:bg-cyan-400 rounded-md p-2 ml-4 h-9 w-9"
       onClick={handleClick}
     >
       {openMenu ? iconClose : iconMenu}

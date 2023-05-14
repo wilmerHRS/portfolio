@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+  label: string;
+  href: string;
+}
+
+const { label, href }: Props = Astro.props;
+---
+
+<a
+  class="transition duration-300 ease-in-out hover:text-black dark:hover:text-white"
+  target="_blank"
+  aria-label={label}
+  href={href}
+>
+  <slot>
+    <Icon name="bx:bxl-github" class="w-6 h-6" />
+  </slot>
+</a>
