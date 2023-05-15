@@ -15,7 +15,7 @@ const aboutMeText = document.getElementById("about-me-text");
 
 // skills
 const skillsText = document.getElementById("skills-text");
-const skillsContainer = document.getElementById("skills-container");
+const skills = document.querySelectorAll(".skills-container");
 
 // projects
 const projectsText = document.getElementById("projects-text");
@@ -71,13 +71,17 @@ headerLinks.forEach((link) => {
   observer.observe(link);
 });
 
+skills.forEach((skill) => {
+  observer.observe(skill);
+});
+
 if (homeMainText) observer.observe(homeMainText);
 if (homeSubText) observer.observe(homeSubText);
 if (homeImage) observer.observe(homeImage);
 if (headerBottomLinks) observer.observe(headerBottomLinks);
 if (aboutMeImg) observer.observe(aboutMeImg);
 if (aboutMeData) observer.observe(aboutMeData);
-if (skillsContainer) observer.observe(skillsContainer);
+// if (skillsContainer) observer.observe(skillsContainer);
 
 if (homeBtnContainer) observerLoop.observe(homeBtnContainer);
 if (aboutMeText) observerLoop.observe(aboutMeText);
