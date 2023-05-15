@@ -1,24 +1,18 @@
 ---
-// import { GrMysql } from "react-icons/gr";
-// import { SiMicrosoftsqlserver, SiMongodb } from "react-icons/si";
 import { Icon } from "astro-icon";
 
 import Column from "../Column.astro";
 import SkillItem from "../SkillItem.astro";
-
 ---
 
 <Column title="Base de Datos">
   <SkillItem name="MySQL" color="#2388C5">
-    <!-- <GrMysql size={22} client:load /> -->
     <Icon name="fontisto:mysql" class="w-6 h-6" />
   </SkillItem>
   <SkillItem name="SQL Server" color="#FF4040">
-    <!-- <SiMicrosoftsqlserver size={22} client:load /> -->
     <Icon name="simple-icons:microsoftsqlserver" class="w-6 h-6" />
   </SkillItem>
   <SkillItem name="MongoDB" color="#23C06B">
-    <!-- <SiMongodb size={22} client:load /> -->
     <Icon name="simple-icons:mongodb" class="w-6 h-6" />
   </SkillItem>
 </Column>

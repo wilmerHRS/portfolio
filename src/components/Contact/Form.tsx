@@ -72,8 +72,31 @@ const Form = () => {
     body?.classList.toggle("overflow-hidden");
   };
 
+  useEffect(() => {
+    const contactForm = document.getElementById("contact-form");
+
+    const observer = new IntersectionObserver(
+      (entries, observe) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 100% 0px 100%",
+        threshold: 0.5,
+      }
+    );
+    if (contactForm) observer.observe(contactForm);
+  }, []);
+
   return (
-    <div className="bg-zinc-100 dark:bg-zinc-800 rounded-xl py-5 px-4 sm:py-10 sm:px-12 max-w-xl m-auto c-contact-padding">
+    <div
+      className="bg-zinc-100 dark:bg-zinc-800 rounded-xl py-5 px-4 sm:py-10 sm:px-12 max-w-xl m-auto c-contact-padding hide-bottom-30"
+      id="contact-form"
+    >
       <form
         method="post"
         autoComplete="off"

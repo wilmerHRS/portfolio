@@ -11,9 +11,12 @@ interface Props {
 
 const { positionImg = "left", data }: Props = Astro.props;
 
-const contImagesClass = positionImg == "right" ? "lg:right-0" : "";
+const contImagesClass =
+  positionImg == "right" ? "lg:right-0 hide-right" : "hide-left";
 const contDataClass =
-  positionImg == "right" ? "md:justify-start" : "md:justify-end";
+  positionImg == "right"
+    ? "md:justify-start hide-left"
+    : "md:justify-end hide-right";
 
 const images = data.images.map(
   (image) => `images/projects/${data.slug}/${image}`
@@ -26,16 +29,16 @@ let numRepositories =
 
 <!-- Proyecto -->
 <div
-  class="container max-w-screen-md lg:max-w-screen-xl mx-auto relative c-aboutme-height lg:mb-20"
+  class="container max-w-screen-md lg:max-w-screen-xl mx-auto relative c-aboutme-height lg:mb-20 project-container"
 >
   <div
-    class="lg:absolute lg:top-0 lg:z-10 lg:h-full flex flex-wrap content-center justify-center lg:w-2/5"
+    class="relative lg:absolute lg:top-0 z-10 lg:h-full flex flex-wrap content-center justify-center lg:w-2/5 project-images"
     class:list={[contImagesClass]}
   >
     <Images position={positionImg} images={images} />
   </div>
   <div
-    class="relative lg:static -top-36 lg:top-0 flex flex-row justify-center content-center"
+    class="relative lg:static -top-36 lg:top-0 flex flex-row justify-center content-center project-data"
     class:list={[contDataClass]}
   >
     <div class="lg:basis-4/6">

@@ -1,34 +1,42 @@
 ---
-import Background from "./Background.astro"
+import Background from "./Background.astro";
 import BtnContact from "./buttons/BtnContact.astro";
 import BtnCV from "./buttons/BtnCV";
 import Data from "./Data.astro";
-
 ---
 
 <!-- Home -->
 <div class="relative overflow-hidden">
   <!-- Container Home -->
-    <div class="container max-w-screen-xl mx-auto px-4 c-home-height" id="inicio">
-      <div class="flex flex-wrap h-screen c-height justify-center md:justify-around lg:justify-between content-center">
-        <!-- Información -->
-        <div class="my-auto mx-auto sm:mx-0">
-          <Data />
-          <div class="flex gap-6 font-semibold pt-10">
-            <BtnContact />
-            <BtnCV client:visible />
-          </div>
-        </div>
-        <!-- Imagen -->
-        <div>
-          <img class="h-52 w-52 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 mt-10 lg:mt-0 object-cover rounded-full" src="images/jpg/rati-dev.jpeg" alt="Rati dev">
+  <div class="container max-w-screen-xl mx-auto px-4 c-home-height" id="inicio">
+    <div
+      class="flex flex-wrap h-screen c-height justify-center md:justify-around lg:justify-between content-center"
+    >
+      <!-- Información -->
+      <div class="my-auto mx-auto sm:mx-0">
+        <Data />
+        <div
+          class="flex gap-6 font-semibold pt-10 hide-bottom"
+          id="home-btn-container"
+        >
+          <BtnContact />
+          <BtnCV client:visible />
         </div>
       </div>
+      <!-- Imagen -->
+      <div>
+        <img
+          class="h-52 w-52 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 mt-10 lg:mt-0 object-cover rounded-full hide-right"
+          src="images/jpg/rati-dev.jpeg"
+          alt="Rati dev"
+          id="home-image"
+        />
+      </div>
     </div>
+  </div>
   <!-- Fondo -->
   <Background />
 </div>
-
 
 <style>
   @media screen and (max-width: 516px) and (max-height: 600px) {

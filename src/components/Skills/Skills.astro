@@ -9,11 +9,22 @@ import ServiceColumn from "./skillType/ServiceColumn.astro";
 
 <!-- Skills -->
 <div class="relative overflow-hidden">
-  <div class="container max-w-screen-xl mx-auto px-4 md:px-8 lg:px-4 c-padding" id="habilidades">
+  <div
+    class="container max-w-screen-xl mx-auto px-4 md:px-8 lg:px-4 c-padding"
+    id="habilidades"
+  >
     <div class="h-full lg:h-screen c-skill-height">
       <div class="h-full flex flex-wrap content-center mb-2">
-        <h3 class="font-semibold text-2xl md:text-3xl xl:text-4xl mb-9 w-full">Habilidades</h3>
-        <div class="grid c-grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-5 md:gap-12 lg:gap-5 xl:gap-9 w-full">
+        <h3
+          class="font-semibold text-2xl md:text-3xl xl:text-4xl mb-9 w-full hide-top"
+          id="skills-text"
+        >
+          Habilidades
+        </h3>
+        <div
+          class="grid c-grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-5 md:gap-12 lg:gap-5 xl:gap-9 w-full hide-bottom-30"
+          id="skills-container"
+        >
           <LanguageColumn />
           <FrameworkColumn />
           <DataBaseColumn />
