@@ -81,7 +81,6 @@ if (homeImage) observer.observe(homeImage);
 if (headerBottomLinks) observer.observe(headerBottomLinks);
 if (aboutMeImg) observer.observe(aboutMeImg);
 if (aboutMeData) observer.observe(aboutMeData);
-// if (skillsContainer) observer.observe(skillsContainer);
 
 if (homeBtnContainer) observerLoop.observe(homeBtnContainer);
 if (aboutMeText) observerLoop.observe(aboutMeText);

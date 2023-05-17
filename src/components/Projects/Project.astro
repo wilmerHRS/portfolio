@@ -18,24 +18,27 @@ const contDataClass =
     ? "md:justify-start hide-left"
     : "md:justify-end hide-right";
 
-const images = data.images.map(
-  (image) => `images/projects/${data.slug}/${image}`
-);
+const id = data.slug;
+
+const images = data.images.map((image) => `images/projects/${id}/${image}`);
 
 let numRepositories =
   (data.repositories.backend?.length ?? 0) +
   (data.repositories.frontend?.length ?? 0);
+
+const idStack = `stack-${id}`;
 ---
 
 <!-- Proyecto -->
 <div
   class="container max-w-screen-md lg:max-w-screen-xl mx-auto relative c-aboutme-height lg:mb-20 project-container"
+  id={id}
 >
   <div
     class="relative lg:absolute lg:top-0 z-10 lg:h-full flex flex-wrap content-center justify-center lg:w-2/5 project-images"
     class:list={[contImagesClass]}
   >
-    <Images position={positionImg} images={images} />
+    <Images position={positionImg} images={images} id={idStack} />
   </div>
   <div
     class="relative lg:static -top-36 lg:top-0 flex flex-row justify-center content-center project-data"
@@ -53,11 +56,12 @@ let numRepositories =
 <!-- Modal -->
 {
   numRepositories >= 2 ? (
-    <ModalGithub id={`modal-${data.slug}`} repositories={data.repositories} />
+    <ModalGithub id={`modal-${id}`} repositories={data.repositories} />
   ) : null
 }
 
-<script define:vars={{ id: data.slug, numRepositories }}>
+<!-- * script para modal -->
+<script define:vars={{ id, numRepositories }}>
   if (numRepositories >= 2) {
     const modalGithub = document.getElementById(`modal-${id}`);
     const btn = document.getElementById(`btn-${id}`);
@@ -71,4 +75,102 @@ let numRepositories =
       body?.classList.toggle("overflow-hidden");
     });
   }
+</script>
+
+<!-- * script para animacion -->
+<script define:vars={{ id, idStack, position: positionImg }}>
+  const project = document.getElementById(id);
+  const stack = document.getElementById(idStack);
+  const images = stack.querySelectorAll("img");
+  let interval;
+  const zIndexMax = images.length + 11;
+
+  const cleanImage = (image) => {
+    image.classList.remove(
+      "lg:-translate-x-10",
+      "lg:translate-x-10",
+      "lg:translate-y-5",
+      "-translate-y-5",
+      "hidden",
+      "lg:absolute",
+      "translate-x-0"
+    );
+  };
+
+  const resetImagePosition = () => {
+    images.forEach((image, i) => {
+      cleanImage(image);
+
+      if (i === 0) {
+        const imgClass =
+          position == "right" ? "lg:-translate-x-10" : "lg:translate-x-10";
+        image.classList.add(
+          "lg:translate-y-5",
+          "lg:absolute",
+          imgClass,
+          "-translate-y-5",
+          "translate-x-0"
+        );
+      } else if (i === images.length - 1) {
+        image.classList.add("-translate-y-5", "hidden");
+      } else {
+        image.classList.add("-translate-y-5", "lg:absolute", "hidden");
+      }
+
+      image.style.zIndex = zIndexMax - i;
+    });
+  };
+
+  const imagesAnimation = (mainIndex = 0) => {
+    let containerExists = false;
+    let nextIndex = mainIndex + 1;
+    nextIndex = nextIndex > images.length - 1 ? 0 : nextIndex;
+
+    images.forEach((image, i) => {
+      cleanImage(image);
+      if (mainIndex === i) {
+        const imgClass =
+          position == "right" ? "lg:-translate-x-10" : "lg:translate-x-10";
+        image.classList.add(
+          "lg:translate-y-5",
+          "lg:absolute",
+          imgClass,
+          "-translate-y-5",
+          "translate-x-0"
+        );
+        image.style.zIndex = zIndexMax + 1;
+        return;
+      }
+      if (i === nextIndex) {
+        image.classList.add("-translate-y-5", "lg:absolute", "hidden");
+        image.style.zIndex = zIndexMax;
+        return;
+      }
+
+      if (!containerExists) {
+        image.classList.add("-translate-y-5", "hidden");
+        image.style.zIndex = zIndexMax - i;
+        containerExists = true;
+        return;
+      }
+      image.classList.add("-translate-y-5", "lg:absolute", "hidden");
+      image.style.zIndex = zIndexMax - i;
+    });
+  };
+
+  project.addEventListener("mouseenter", (e) => {
+    let index = 1;
+    interval = setInterval(() => {
+      imagesAnimation(index);
+      index++;
+      if (index >= images.length) index = 0;
+    }, 2500);
+  });
+
+  project.addEventListener("mouseleave", (e) => {
+    interval && clearInterval(interval);
+    resetImagePosition();
+  });
+
+  resetImagePosition();
 </script>

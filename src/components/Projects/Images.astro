@@ -2,27 +2,26 @@
 interface Props {
   position?: "left" | "right";
   images: string[];
+  id: string;
 }
 
-const { position = "left", images }: Props = Astro.props;
+const { position = "left", images, id }: Props = Astro.props;
 
-const imgClass = position == "right" ? "-ml-11" : "ml-11";
-
-// console.log(images);
+const imagenes = [
+  "images/jpg/img-prueba.jpg",
+  "images/jpg/img-prueba-2.jpg",
+  "images/jpg/img-prueba3.jpg",
+];
 ---
 
-<div class="relative w-full z-10 lg:z-0 px-6 sm:px-16 lg:px-0">
-  <div class="lg:relative lg:-top-6">
-    <img
-      class="object-cover rounded-xl shadow-botton-content"
-      src="images/jpg/img-prueba.jpg"
-      alt="Imagen 1 referecial del proyecto"
-    />
-    <img
-      class="hidden lg:block object-cover rounded-xl shadow-botton-content absolute z-20 top-11"
-      class:list={[imgClass]}
-      src="images/jpg/img-prueba.jpg"
-      alt="Imagen 2 referecial del proyecto"
-    />
-  </div>
+<div class="relative w-full z-10 lg:z-0 px-6 sm:px-16 lg:px-0" id={id}>
+  {
+    imagenes.map((image) => (
+      <img
+        class="object-cover rounded-xl shadow-botton-content transition-transform duration-1000 ease-in-out top-0 lg:block"
+        src={image}
+        alt="Imagen 1 referecial del proyecto"
+      />
+    ))
+  }
 </div>

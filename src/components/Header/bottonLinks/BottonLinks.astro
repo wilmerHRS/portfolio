@@ -1,32 +1,26 @@
 ---
-// import {ImLinkedin} from "react-icons/im";
-// import {BsGithub} from "react-icons/bs";
-// import {BsWhatsapp} from "react-icons/bs";
 import { Icon } from "astro-icon";
 import BtnLink from "./BtnLink.astro";
 ---
 
 <div class="flex flex-wrap justify-center w-full">
   <div
-    class="mb-2 md:mb-14 fixed bottom-0 z-20 backdrop-blur-md bg-zinc-100/30 dark:bg-zinc-700/30 flex gap-3 shadow-botton-link rounded-full py-2 md:py-3 px-5 md:px-8 hide-bottom"
+    class="mb-2 md:mb-14 fixed bottom-0 z-20 backdrop-blur-md bg-inherit-100/30 flex gap-3 rounded-full py-1 px-2 hide-bottom-30"
     id="header-bottom-links"
   >
     <BtnLink
       label="Botón de Linkedin"
       href="https://www.linkedin.com/in/wilmer-reluz-30020420b"
     >
-      <!-- <ImLinkedin size={24} client:load /> -->
       <Icon name="mdi:linkedin" class="w-7 h-7" />
     </BtnLink>
     <BtnLink label="Botón de Github" href="https://github.com/wilmerHRS">
-      <!-- <BsGithub size={24} client:load /> -->
       <Icon name="bx:bxl-github" class="w-7 h-7" />
     </BtnLink>
     <BtnLink
       label="Botón de Whatsapp"
       href="https://wa.me/51957263203?text=Hola%20Wilmer%20Reluz%20quiero%20comunicarme%20contigo"
     >
-      <!-- <BsWhatsapp size={24} client:load /> -->
       <Icon name="ic:baseline-whatsapp" class="w-7 h-7" />
     </BtnLink>
   </div>
