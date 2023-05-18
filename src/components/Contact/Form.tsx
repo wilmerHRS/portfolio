@@ -17,6 +17,7 @@ const initialForm: IForm = {
 const Form = () => {
   const [form, setForm] = useState(initialForm);
   const formData = useRef<HTMLFormElement | null>(null);
+  let timeout: NodeJS.Timeout;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,14 +63,20 @@ const Form = () => {
 
   const openModalMessage = () => {
     const modalMessage = document.getElementById("modal-message");
-    let body = document.querySelector("body");
     if (!modalMessage || !modalMessage.style) return;
-    let modal = modalMessage.querySelector(".modal");
 
+    let body = document.querySelector("body");
+    let modal = modalMessage.querySelector(".modal");
     modalMessage.style.opacity = "1";
     modalMessage.style.visibility = "visible";
     modal?.classList.toggle("modal-close");
     body?.classList.toggle("overflow-hidden");
+
+    timeout = setTimeout(() => {
+      let btnClose: HTMLButtonElement | null =
+        modalMessage.querySelector(".close");
+      btnClose?.click();
+    }, 5500);
   };
 
   useEffect(() => {
@@ -90,6 +97,11 @@ const Form = () => {
       }
     );
     if (contactForm) observer.observe(contactForm);
+
+    return () => {
+      if (contactForm) observer.unobserve(contactForm);
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
