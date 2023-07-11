@@ -56,7 +56,7 @@ if (data.repositories.frontend?.length)
       numRepositories >= 2 ? (
         <GithubButton id={data.slug} />
       ) : (
-        <LinkGithubButton href={data.link} />
+        <LinkGithubButton href={href} />
       )
     }
     <LinkButton href={data.link} />

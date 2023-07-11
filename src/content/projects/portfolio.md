@@ -18,6 +18,7 @@ technology:
 images:
   - image1.jpg
   - image1.jpg
+  - image1.jpg
 
 link: https://github.com/wilmerHRS/portfolio
 

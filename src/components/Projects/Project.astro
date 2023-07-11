@@ -62,115 +62,121 @@ const idStack = `stack-${id}`;
 
 <!-- * script para modal -->
 <script define:vars={{ id, numRepositories }}>
-  if (numRepositories >= 2) {
-    const modalGithub = document.getElementById(`modal-${id}`);
-    const btn = document.getElementById(`btn-${id}`);
-    let modal = modalGithub.querySelector(".modal");
-    let body = document.querySelector("body");
+if (numRepositories >= 2) {
+  const modalGithub = document.getElementById(`modal-${id}`);
+  const btn = document.getElementById(`btn-${id}`);
+  let modal = modalGithub.querySelector(".modal");
+  let body = document.querySelector("body");
 
-    btn.addEventListener("click", () => {
-      modalGithub.style.opacity = "1";
-      modalGithub.style.visibility = "visible";
-      modal?.classList.toggle("modal-close");
-      body?.classList.toggle("overflow-hidden");
-    });
-  }
+  btn.addEventListener("click", () => {
+    modalGithub.style.opacity = "1";
+    modalGithub.style.visibility = "visible";
+    modal?.classList.toggle("modal-close");
+    body?.classList.toggle("overflow-hidden");
+  });
+}
 </script>
 
 <!-- * script para animacion -->
 <script define:vars={{ id, idStack, position: positionImg }}>
-  const project = document.getElementById(id);
-  const stack = document.getElementById(idStack);
-  const images = stack.querySelectorAll("img");
-  let interval;
-  const zIndexMax = images.length + 11;
+const project = document.getElementById(id);
+const stack = document.getElementById(idStack);
+const images = stack.querySelectorAll("img");
+let interval;
+const zIndexMax = images.length + 11;
 
-  const cleanImage = (image) => {
-    image.classList.remove(
-      "lg:-translate-x-10",
-      "lg:translate-x-10",
-      "lg:translate-y-5",
-      "-translate-y-5",
-      "hidden",
-      "lg:absolute",
-      "translate-x-0"
-    );
-  };
+const cleanImage = (image) => {
+  image.classList.remove(
+    "lg:-translate-x-10",
+    "lg:translate-x-10",
+    "lg:translate-y-5",
+    "-translate-y-5",
+    "hidden",
+    "lg:absolute",
+    "translate-x-0"
+  );
+};
 
-  const resetImagePosition = () => {
-    images.forEach((image, i) => {
-      cleanImage(image);
+const resetImagePosition = () => {
+  images.forEach((image, i) => {
+    cleanImage(image);
 
-      if (i === 0) {
-        const imgClass =
-          position == "right" ? "lg:-translate-x-10" : "lg:translate-x-10";
-        image.classList.add(
-          "lg:translate-y-5",
-          "lg:absolute",
-          imgClass,
-          "-translate-y-5",
-          "translate-x-0"
-        );
-      } else if (i === images.length - 1) {
-        image.classList.add("-translate-y-5", "hidden");
-      } else {
-        image.classList.add("-translate-y-5", "lg:absolute", "hidden");
-      }
-
-      image.style.zIndex = zIndexMax - i;
-    });
-  };
-
-  const imagesAnimation = (mainIndex = 0) => {
-    let containerExists = false;
-    let nextIndex = mainIndex + 1;
-    nextIndex = nextIndex > images.length - 1 ? 0 : nextIndex;
-
-    images.forEach((image, i) => {
-      cleanImage(image);
-      if (mainIndex === i) {
-        const imgClass =
-          position == "right" ? "lg:-translate-x-10" : "lg:translate-x-10";
-        image.classList.add(
-          "lg:translate-y-5",
-          "lg:absolute",
-          imgClass,
-          "-translate-y-5",
-          "translate-x-0"
-        );
-        image.style.zIndex = zIndexMax + 1;
-        return;
-      }
-      if (i === nextIndex) {
-        image.classList.add("-translate-y-5", "lg:absolute", "hidden");
-        image.style.zIndex = zIndexMax;
-        return;
-      }
-
-      if (!containerExists) {
-        image.classList.add("-translate-y-5", "hidden");
-        image.style.zIndex = zIndexMax - i;
-        containerExists = true;
-        return;
-      }
+    if (i === 0) {
+      const imgClass =
+        position == "right" ? "lg:-translate-x-10" : "lg:translate-x-10";
+      image.classList.add(
+        "lg:translate-y-5",
+        "lg:absolute",
+        imgClass,
+        "-translate-y-5",
+        "translate-x-0"
+      );
+    } else if (i === images.length - 1) {
+      image.classList.add("-translate-y-5", "hidden");
+    } else {
       image.classList.add("-translate-y-5", "lg:absolute", "hidden");
+    }
+
+    image.style.zIndex = zIndexMax - i;
+  });
+};
+
+const imagesAnimation = (mainIndex = 0) => {
+  let containerExists = false;
+  let nextIndex = mainIndex + 1;
+  nextIndex = nextIndex > images.length - 1 ? 0 : nextIndex;
+  let totalImages = images.length;
+
+  images.forEach((image, i) => {
+    cleanImage(image);
+
+    //imagen actual al frente
+    if (mainIndex === i) {
+      const imgClass =
+        position == "right" ? "lg:-translate-x-10" : "lg:translate-x-10";
+      image.classList.add(
+        "lg:translate-y-5",
+        "lg:absolute",
+        imgClass,
+        "-translate-y-5",
+        "translate-x-0"
+      );
+      image.style.zIndex = zIndexMax + 1;
+      return;
+    }
+
+    //siguiente imagen
+    if (i === nextIndex && totalImages > 2) {
+      image.classList.add("-translate-y-5", "lg:absolute", "hidden");
+      image.style.zIndex = zIndexMax;
+      return;
+    }
+
+    //imagen que servirá de contenedor
+    if (!containerExists) {
+      image.classList.add("-translate-y-5", "hidden");
       image.style.zIndex = zIndexMax - i;
-    });
-  };
-
-  project.addEventListener("mouseenter", (e) => {
-    let index = 1;
-    interval = setInterval(() => {
-      imagesAnimation(index);
-      index++;
-      if (index >= images.length) index = 0;
-    }, 2500);
+      containerExists = true;
+      return;
+    }
+    image.classList.add("-translate-y-5", "lg:absolute", "hidden");
+    image.style.zIndex = zIndexMax - i;
   });
+};
 
-  project.addEventListener("mouseleave", (e) => {
-    interval && clearInterval(interval);
-    resetImagePosition();
-  });
+project.addEventListener("mouseenter", (e) => {
+  let index = 1;
+  interval = setInterval(() => {
+    imagesAnimation(index);
+    index++;
+    if (index >= images.length) index = 0;
+  }, 2500);
+});
 
+project.addEventListener("mouseleave", (e) => {
+  interval && clearInterval(interval);
   resetImagePosition();
+});
+
+resetImagePosition();
 </script>

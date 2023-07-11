@@ -12,11 +12,13 @@ const imagenes = [
   "images/jpg/img-prueba-2.jpg",
   "images/jpg/img-prueba3.jpg",
 ];
+
+console.log(images);
 ---
 
 <div class="relative w-full z-10 lg:z-0 px-6 sm:px-16 lg:px-0" id={id}>
   {
-    imagenes.map((image) => (
+    images.map((image) => (
       <img
         class="object-cover rounded-xl shadow-botton-content transition-transform duration-1000 ease-in-out top-0 lg:block"
         src={image}
